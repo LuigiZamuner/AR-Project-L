@@ -20,12 +20,16 @@ namespace Mediapipe.Unity
     public static PointListAnnotation instance;
     [SerializeField] private Color _color = Color.green;
     [SerializeField] private float _radius = 15.0f;
-    [SerializeField] public List<PointAnnotation> importantPoints = new List<PointAnnotation>();
+    public List<PointAnnotation> importantPoints = new List<PointAnnotation>();
 #if UNITY_EDITOR
 
     private void Awake()
     {
       instance = this;
+    }
+    private void Update()
+    {
+      Debug.Log(importantPoints.Count + "opa1");
     }
     private void OnValidate()
     {

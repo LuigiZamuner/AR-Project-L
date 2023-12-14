@@ -33,17 +33,15 @@ public class GetPoseHand : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+            Debug.Log(PointListAnnotation.instance.importantPoints.Count + "opa2");
             GetFingerBools();
             GetPoses();
 
     }
 
       private void GetFingerBools()
-    {
+      {
 
-        if (handGameobject.activeInHierarchy)
-        {
              //thumb finger confirmation
             if (PointListAnnotation.instance.importantPoints[5].gameObject.transform.position.x > PointListAnnotation.instance.importantPoints[2].gameObject.transform.position.x)
             {
@@ -107,10 +105,9 @@ public class GetPoseHand : MonoBehaviour
             {
                 littleUp = true;
             }
-            Debug.Log("oi2");
-        }
+      }
 
-    }
+  
     private void GetPoses()
     {
         //bunnyPose
