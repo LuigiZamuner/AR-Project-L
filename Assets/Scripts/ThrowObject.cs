@@ -84,7 +84,7 @@ public class ThrowObject : MonoBehaviour
         Vector2 touchPosition = finger.currentTouch.screenPosition;
         Vector3 worldPosition = arCamera.ScreenToWorldPoint(new Vector3(touchPosition.x, touchPosition.y, arCamera.nearClipPlane + 1f));
         //pokeball mode
-        if (touchSupport.buttonIndex == 1 && touchPosition.y > 45)
+        if (touchSupport.buttonIndex == 1 && touchPosition.y > 140)
         {
             if (finger.index != 0)
                 return;
@@ -94,7 +94,7 @@ public class ThrowObject : MonoBehaviour
             }
         }
         //rotate mode
-        if (touchSupport.buttonIndex == 2 && touchPosition.y > 45)
+        if (touchSupport.buttonIndex == 2 && touchPosition.y > 140)
         {
 
             rotationSupport = worldPosition.x * 200;
@@ -111,7 +111,7 @@ public class ThrowObject : MonoBehaviour
             if (finger.index != 0)
                 return;
 
-            rbInstatiatedObj.AddForce(new Vector3(0, 1, 1) * 3f, ForceMode.Impulse);
+            rbInstatiatedObj.AddForce(new Vector3(0, 1, 1) * 4f, ForceMode.Impulse);
             StartCoroutine(rbInstatiatedObj.GetComponent<Pokeball>().Lifetime());
         }
         if (touchSupport.buttonIndex == 2)

@@ -17,6 +17,17 @@ namespace Mediapipe.Unity.HandTracking
     [SerializeField] private MultiHandLandmarkListAnnotationController _handLandmarksAnnotationController;
     [SerializeField] private NormalizedRectListAnnotationController _handRectsFromLandmarksAnnotationController;
 
+    [Header("In Game Sup")]
+    public bool indexDown;
+    public bool middleDown;
+    public bool ringDown;
+    public bool littleDown;
+
+    public static HandTrackingSolution Instance;
+    private void Awake()
+    {
+      Instance = this;
+    }
     public HandTrackingGraph.ModelComplexity modelComplexity
     {
       get => graphRunner.modelComplexity;
@@ -77,6 +88,50 @@ namespace Mediapipe.Unity.HandTracking
       if (runningMode == RunningMode.Sync)
       {
         var _ = graphRunner.TryGetNext(out palmDetections, out handRectsFromPalmDetections, out handLandmarks, out handWorldLandmarks, out handRectsFromLandmarks, out handedness, true);
+        if (handLandmarks != null)
+        {
+
+          if (handLandmarks[0].Landmark[8].Y > handLandmarks[0].Landmark[5].Y)// dedo abaixado
+          {
+            indexDown = true;
+            Debug.Log("indexdown");
+          }
+          else
+          {
+            indexDown = false;
+          }
+
+          if (handLandmarks[0].Landmark[12].Y > handLandmarks[0].Landmark[9].Y)
+          {
+            middleDown = true;
+            Debug.Log("middledown");
+          }
+          else
+          {
+            middleDown = false;
+          }
+
+          if (handLandmarks[0].Landmark[16].Y > handLandmarks[0].Landmark[13].Y)
+          {
+            ringDown = true;
+            Debug.Log("ringdown");
+          }
+          else
+          {
+            ringDown = false;
+          }
+
+          if (handLandmarks[0].Landmark[20].Y > handLandmarks[0].Landmark[17].Y)
+          {
+            littleDown = true;
+            Debug.Log("littledown");
+          }
+          else
+          {
+            littleDown = false;
+          }
+        }
+
       }
       else if (runningMode == RunningMode.NonBlockingSync)
       {
