@@ -6,7 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/MediaPipeUnity/Samples/Scenes/Hand Tracking/Hand Tracking 2.unity
+    path: Assets/ExampleAssets/Scenes/ArScene.unity
+    guid: 5efd31d8d158ea144b1082d7ab26a3d7
+  - enabled: 1
+    path: Assets/MediaPipeUnity/Samples/Scenes/Hand Tracking/PetPokemon.unity
     guid: 040e49b73601556478322ae4023cf597
   m_configObjects:
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: 744b813df90924c169af73489b8325de,
